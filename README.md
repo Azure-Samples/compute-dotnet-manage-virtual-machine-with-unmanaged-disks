@@ -4,7 +4,7 @@ platforms: .Net
 author: anuchandy
 ---
 
-#Getting Started with Compute - Manage Virtual Machine With Unmanaged Disks - in .Net #
+# Getting Started with Compute - Manage Virtual Machine With Unmanaged Disks - in .Net #
 
           Azure Compute sample for managing virtual machines -
            - Create a virtual machine

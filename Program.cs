@@ -4,9 +4,9 @@
 using Microsoft.Azure.Management.Compute.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent.Models;
 using Microsoft.Azure.Management.Fluent;
-using Microsoft.Azure.Management.Resource.Fluent;
-using Microsoft.Azure.Management.Resource.Fluent.Authentication;
-using Microsoft.Azure.Management.Resource.Fluent.Core;
+using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
 using System;
 
@@ -45,8 +45,8 @@ namespace ManageVirtualMachineWithUnmanagedDisks
                         .WithRegion(Region.USEast)
                         .WithNewResourceGroup(rgName)
                         .WithNewPrimaryNetwork("10.0.0.0/28")
-                        .WithPrimaryPrivateIpAddressDynamic()
-                        .WithoutPrimaryPublicIpAddress()
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
                         .WithPopularWindowsImage(KnownWindowsVirtualMachineImage.WindowsServer2012R2Datacenter)
                         .WithAdminUsername(UserName)
                         .WithAdminPassword(Password)
@@ -107,7 +107,7 @@ namespace ManageVirtualMachineWithUnmanagedDisks
                 //=============================================================
                 // Update - Expand the OS drive size by 10 GB
 
-                int osDiskSizeInGb = windowsVM.OsDiskSize;
+                int osDiskSizeInGb = windowsVM.OSDiskSize;
                 if (osDiskSizeInGb == 0)
                 {
                     // Server is not returning the OS Disk size, possible bug in server
@@ -150,7 +150,7 @@ namespace ManageVirtualMachineWithUnmanagedDisks
                 Utilities.Log("Powered OFF VM: " + windowsVM.Id + "; state = " + windowsVM.PowerState);
 
                 // Get the network where Windows VM is hosted
-                var network = windowsVM.GetPrimaryNetworkInterface().PrimaryIpConfiguration.GetNetwork();
+                var network = windowsVM.GetPrimaryNetworkInterface().PrimaryIPConfiguration.GetNetwork();
 
                 //=============================================================
                 // Create a Linux VM in the same virtual network
@@ -162,8 +162,8 @@ namespace ManageVirtualMachineWithUnmanagedDisks
                         .WithExistingResourceGroup(rgName)
                         .WithExistingPrimaryNetwork(network)
                         .WithSubnet("subnet1") // Referencing the default subnet name when no name specified at creation
-                        .WithPrimaryPrivateIpAddressDynamic()
-                        .WithoutPrimaryPublicIpAddress()
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername(UserName)
                         .WithRootPassword(Password)
@@ -180,7 +180,7 @@ namespace ManageVirtualMachineWithUnmanagedDisks
 
                 Utilities.Log("Printing list of VMs =======");
 
-                foreach (var virtualMachine in azure.VirtualMachines.ListByGroup(resourceGroupName))
+                foreach (var virtualMachine in azure.VirtualMachines.ListByResourceGroup(resourceGroupName))
                 {
                     Utilities.PrintVirtualMachine(virtualMachine);
                 }
@@ -218,7 +218,7 @@ namespace ManageVirtualMachineWithUnmanagedDisks
 
                 var azure = Azure
                     .Configure()
-                    .WithLogLevel(HttpLoggingDelegatingHandler.Level.BASIC)
+                    .WithLogLevel(HttpLoggingDelegatingHandler.Level.Basic)
                     .Authenticate(credentials)
                     .WithDefaultSubscription();
 
