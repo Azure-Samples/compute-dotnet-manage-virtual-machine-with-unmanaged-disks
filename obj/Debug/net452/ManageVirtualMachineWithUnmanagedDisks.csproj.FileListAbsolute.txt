@@ -1,0 +1,4 @@
+C:\Sources\dotnet-samples\compute-dotnet-manage-virtual-machine-with-unmanaged-disks\bin\Debug\net452\ManageVirtualMachineWithUnmanagedDisks.runtimeconfig.json
+C:\Sources\dotnet-samples\compute-dotnet-manage-virtual-machine-with-unmanaged-disks\bin\Debug\net452\ManageVirtualMachineWithUnmanagedDisks.runtimeconfig.dev.json
+C:\Sources\dotnet-samples\compute-dotnet-manage-virtual-machine-with-unmanaged-disks\obj\Debug\net452\ManageVirtualMachineWithUnmanagedDisks.csproj.ManageVirtualMachineWithUnmanagedDisks.exe.config
+C:\Sources\dotnet-samples\compute-dotnet-manage-virtual-machine-with-unmanaged-disks\obj\Debug\net452\ManageVirtualMachineWithUnmanagedDisks.csproj.CoreCompileInputs.cache
