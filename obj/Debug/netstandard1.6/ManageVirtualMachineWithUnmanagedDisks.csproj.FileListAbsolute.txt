@@ -1,2 +1,0 @@
-C:\Sources\dotnet-samples\compute-dotnet-manage-virtual-machine-with-unmanaged-disks\bin\Debug\netstandard1.6\ManageVirtualMachineWithUnmanagedDisks.deps.json
-C:\Sources\dotnet-samples\compute-dotnet-manage-virtual-machine-with-unmanaged-disks\obj\Debug\netstandard1.6\ManageVirtualMachineWithUnmanagedDisks.csproj.CoreCompileInputs.cache
